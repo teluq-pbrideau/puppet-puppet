@@ -390,6 +390,9 @@ authorization: {
             name: "jolokia metrics"
         },
 <%- end -%>
+<%- if @auth_extra -%>
+<%= @auth_extra %>
+<%- end -%>
         {
             # Deny everything else. This ACL is not strictly
             # necessary, but illustrates the default policy
