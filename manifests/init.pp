@@ -560,6 +560,9 @@
 # $server_jolokia_metrics_allowlist::       The allowlist of clients that
 #                                           can query the jolokia /metrics/v2 endpoint
 #
+# $server_auth_extra::                      Additional rules for auth.conf
+#                                           Defaults to undef
+#
 # === Usage:
 #
 # * Simple usage:
@@ -762,6 +765,7 @@ class puppet (
   Optional[Stdlib::Absolutepath] $server_versioned_code_id = undef,
   Optional[Stdlib::Absolutepath] $server_versioned_code_content = undef,
   Array[String[1]] $server_jolokia_metrics_allowlist = [],
+  Optional[String] $server_auth_extra = undef,
   Stdlib::Filemode $puppetconf_mode = $puppet::params::puppetconf_mode,
 ) inherits puppet::params {
   contain puppet::config

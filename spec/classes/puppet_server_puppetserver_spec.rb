@@ -577,6 +577,16 @@ describe 'puppet' do
           it { expect(rule['allow']).to eq(['localhost', 'host.example.com']) }
         end
       end
+
+      describe 'auth_extra' do
+        let(:content) { catalogue.resource('file', auth_conf).send(:parameters)[:content] }
+
+        context 'when set' do
+          let(:params) { super().merge(server_auth_extra: "# test-content-string" ) }
+
+          it { should contain_file(auth_conf).with_content(%r{^# test-content-string$}) }
+        end
+      end
     end
   end
 end

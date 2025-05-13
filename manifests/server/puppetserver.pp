@@ -63,6 +63,10 @@
 # @param disable_fips
 #   Disables FIPS support within the JVM
 #
+# @param auth_extra
+#   Additional rules for auth.conf
+#   Defaults to undef
+#
 # @example
 #
 #   # configure memory for java < 8
@@ -147,6 +151,7 @@ class puppet::server::puppetserver (
   Optional[Stdlib::Absolutepath] $versioned_code_content = $puppet::server::versioned_code_content,
   Boolean $disable_fips = $facts['os']['family'] == 'RedHat',
   Array[String[1]] $jolokia_metrics_allowlist = $puppet::server::jolokia_metrics_allowlist,
+  Optional[String] $auth_extra = $puppet::server::auth_extra,
 ) {
   include puppet::server
 
